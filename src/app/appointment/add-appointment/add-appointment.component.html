@@ -1,0 +1,54 @@
+<div class="flex p-2 shadow rounded">
+  <div class="flex flex-col w-full bg-blue-100">
+    <h1 class="text-center bg-blue-400 text-white ">Book An Appointment</h1>
+    <div class="grid grid-cols-2 gap-2 p-2">
+      <div class="flex flex-col">
+        <label for="">Patient Name</label>
+        <p class="font-semibold">{{ logginUser.username }}</p>
+      </div>
+      <div class="flex flex-col">
+        <label for="">Email</label>
+        <p class="font-semibold">{{ logginUser.email }}</p>
+      </div>
+       <div class="flex flex-col">
+        <label for="">Gender / Age</label>
+        <p class="font-semibold">{{ logginUser.gender==0?'M':'F' }} / {{ logginUser.age }}</p>
+      </div>
+      <div class="flex flex-col">
+        <label for="">Phone</label>
+        <p class="font-semibold">{{ logginUser.phone }}</p>
+      </div>
+
+    </div>
+    <form action="" #appointmentForm="ngForm" (ngSubmit)="saveAppointment(appointmentForm)">
+      <div class="grid grid-cols-2 gap-2 p-2">
+        <div class="flex flex-col">
+          <label for="">Booking Date</label>
+          <input type="date" name="booking_date" id="" #booking_date="ngModel" [(ngModel)]="bookForm.booking_date">
+        </div>
+        <div class="flex flex-col">
+          <mat-form-field appearance="outline" class="w-full mt-2">
+            <mat-label>Prefered Time</mat-label>
+            <mat-select name="prefered_time" #prefered_time="ngModel" [(ngModel)]="bookForm.prefered_time">
+              <mat-option [value]="0">Select Time</mat-option>
+              <mat-option [value]="1">7am-10am</mat-option>
+              <mat-option [value]="2">11am-1pm</mat-option>
+              <mat-option [value]="3">2pm-4pm</mat-option>
+              <mat-option [value]="4">4pm-6pm</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="flex flex-col">
+          <button type="button" (click)="openTestList()" class="p-2 bg-purple-300 text-black w-full shadow rounded">Select Tests</button>
+        </div>
+      </div>
+      <div class="flex">
+        <button type="submit"  class="w-full bg-blue-400 text-white p-2 shadow rounded">Submit</button>
+      </div>
+    </form>
+
+
+  </div>
+
+
+</div>

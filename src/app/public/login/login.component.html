@@ -1,0 +1,33 @@
+<div
+  class="flex w-full min-h-screen justify-center items-center bg-cover bg-no-repeat bg-center"
+  style="background-image: url('/assets/images/man-lab-working-with-microscope.jpg');">
+
+  <div class="flex flex-col md:flex-row items-start gap-4">
+    <div class="p-4 shadow rounded text-white w-[400px]" style="background: #3d98bbb0;">
+
+      <h1 class="text-center">Sign In</h1>
+      <form action="" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+        <div class="flex flex-col">
+          <label for="">Email</label>
+          <input type="text" name="email" required email class="p-2 w-full rounded shadow text-black" #email="ngModel" [(ngModel)]="loginData.email">
+          <div class="text-red-500" *ngIf="email.touched && email.dirty">
+            <p *ngIf="email.errors?.['email']">Invalid email</p>
+            <p *ngIf="email.errors?.['required']">Email is required</p>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <label for="">Password</label>
+          <input type="password" name="password" required minlength="5" maxlength="10" class="p-2 w-full rounded shadow text-black"  #password="ngModel" [(ngModel)]="loginData.password" >
+          <div class="text-red-500" *ngIf="password.touched && password.dirty">
+            <p *ngIf="password.errors?.['required']">Password is required</p>
+            <p *ngIf="password.errors?.['minlength']">Atleast 5 characters required</p>
+            <p *ngIf="password.errors?.['maxlength']">Passowrd should not exceed 10 characters</p>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <button type="submit" class="p-2 mt-2 text-white text-center shadow rounded bg-blue-500 w-1/2">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

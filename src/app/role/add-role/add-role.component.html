@@ -1,0 +1,16 @@
+<div class="flex w-[1300px] h-[150px] shadow rounded ml-4 mt-2 p-4 bg-blue-300" >
+  <div class="flex flex-col">
+    <form action="" #addRole="ngForm" (ngSubmit)="saveRole(addRole)">
+      <h2>Role List</h2>
+      <div class="grid grid-cols-2 gap-1">
+        <div class="flex flex-col">
+          <label for="">Role Name</label>
+          <input type="text" name="role" id="" #role="ngModel" [(ngModel)]="roleData.role_name" class="w-full p-2 shadow rounded">
+        </div>
+        <div class="flex items-center">
+          <button type="submit" class="w-full p-2 bg-blue-600 shadow rounded mt-5 ml-2">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

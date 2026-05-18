@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<table mat-table class="mat-elavation-z8 w-full p-2 ml-2" [dataSource]="dataSource">
+  <ng-container matColumnDef="no">
+    <th mat-header-cell *matHeaderCellDef>No</th>
+    <td mat-cell *matCellDef="let row;let i=index">{{ i+1 }}</td>
+  </ng-container>
+  <ng-container matColumnDef="test_name">
+    <th mat-header-cell *matHeaderCellDef>Test Name</th>
+    <td mat-cell *matCellDef="let row">{{ row.get_test?.test_name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="booked_date">
+    <th mat-header-cell *matHeaderCellDef>Sample Collected Date</th>
+    <td mat-cell *matCellDef="let row">{{ row.get_appointment?row.get_appointment.booking_date:"" |date:'d-m-Y'}}</td>
+  </ng-container>
+
+   <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>#</th>
+    <td mat-cell *matCellDef="let row">
+        <button type="button" class="w-[150px] p-2 bg-yellow-500 text-white shadow rounded" (click)="download(row)">Download</button>
+    <td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+</table>

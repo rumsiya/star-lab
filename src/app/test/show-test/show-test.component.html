@@ -1,0 +1,28 @@
+<div class="flex p-2 shadow rounded">
+  <div class="flex flex-col">
+    <h1>Test - #{{test.id}}</h1>
+    <div class="grid grid-cols-2 gap-2">
+      <div class="flex">
+        <p ><span class="font-bold">Test Name:</span>  {{test.test_name}}</p>
+
+      </div>
+      <div class="flex">
+        <p ><span class="font-bold">Price:</span>  {{test.price}}</p>
+
+      </div>
+      <div class="flex">
+        <p ><span class="font-bold">Normal Value:</span>  {{test.normal_min}} - {{test.normal_max}}</p>
+
+      </div>
+      <div class="flex">
+        <p ><span class="font-bold">Unit:</span> {{ test.get_unit?test.get_unit.unit_name:""}} </p>
+
+      </div>
+        <div class="flex">
+        <p ><span class="font-bold">Description:</span> {{ test.description }} </p>
+
+      </div>
+
+    </div>
+  </div>
+</div>

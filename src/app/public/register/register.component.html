@@ -1,0 +1,87 @@
+<div
+  class="flex w-full min-h-screen justify-center items-center bg-cover bg-no-repeat bg-center"
+  style="background-image: url('/assets/images/man-lab-working-with-microscope.jpg');">
+
+  <div class="flex flex-col md:flex-row items-start gap-4">
+    <div class="p-4 shadow rounded text-white w-[500px]" style="background: #3d98bb9c;">
+
+      <h1 class="text-center text-xl">
+        <i class="fa fa-user-plus"></i>Sign Up</h1>
+      <form action="" #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+        <div class="grid grid-cols-2 gap-2 mt-2">
+          <div class="flex flex-col">
+            <label for="">Username</label>
+            <input type="text" name="username" id="" required minlength="3" maxlength="10" class="w-full p-2 shadow rounded text-black" #username="ngModel" [(ngModel)]="registerData.username">
+            <div *ngIf="username.invalid && username.touched" class="text-red-500">
+              <p *ngIf="username.errors?.['required']">This Field is required</p>
+              <p *ngIf="username.errors?.['minlength']">Atleast 3 characters required</p>
+              <p *ngIf="username.errors?.['maxlength']">Username should not exceed 8 characters</p>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <label for="">Email</label>
+            <input type="email" name="email" required email id="" class="w-full p-2 shadow rounded text-black "  #email="ngModel" [(ngModel)]="registerData.email">
+            <div *ngIf="email.touched && email.dirty" class="text-red-500">
+              <p *ngIf="email.errors?.['required']">Email is required</p>
+              <p *ngIf="email.errors?.['email']">Email is invalid</p>
+
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <label for="">Password</label>
+            <input type="password" name="password" id="" required minlength="5" maxlength="10" class="w-full p-2 shadow rounded  text-black"  #password="ngModel" [(ngModel)]="registerData.password">
+            <div *ngIf="password.touched && password.dirty" class="text-red-500">
+              <p *ngIf="password.errors?.['required']">Password is required</p>
+              <p *ngIf="password.errors?.['minlength']">Atleast 5 characters required</p>
+              <p *ngIf="password.errors?.['maxlength']">Password should not exceed 10 characters</p>
+
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <label for="">Confirm Password</label>
+            <input type="password" name="cpass" id="" required minlength="5" maxlength="10" class="w-full p-2 shadow rounded  text-black"  #cpass="ngModel" [(ngModel)]="registerData.cpass">
+            <div *ngIf="cpass.touched && cpass.dirty" class="text-red-500">
+              <p *ngIf="cpass.errors?.['required']">Password is required</p>
+              <p *ngIf="cpass.errors?.['minlength']">Atleast 5 characters required</p>
+              <p *ngIf="cpass.errors?.['maxlength']">Password should not exceed 10 characters</p>
+              <p *ngIf="registerData.cpass!==registerData.password">Password should match</p>
+
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <label for="">Age</label>
+            <input type="number" name="age" id="" class="w-full p-2 shadow rounded  text-black"  #age="ngModel" [(ngModel)]="registerData.age">
+            <div *ngIf="age.touched && age.dirty" class="text-red-500">
+                <p *ngIf="age.invalid">Invalid age</p>
+                <p *ngIf="age.errors?.['required']">This field is required</p>
+
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <label for="">Gender</label>
+            <div class="flex items-center gap-2">
+              <input type="radio" name="gender" value="0" id="" required #gender="ngModel" [(ngModel)]="registerData.gender">Male
+              <input type="radio" name="gender" value="1" id=""  required #username="ngModel" [(ngModel)]="registerData.gender">Female
+              <div *ngIf="gender.touched && gender.dirty" class="text-red-500">
+                  <p *ngIf="gender.errors?.['required']">This field is required</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <label for="">Phone</label>
+            <input type="text" name="phone" id="" required pattern="^[6-9][0-9]{9}$" class="w-full p-2 shadow rounded  text-black"  #phone="ngModel" [(ngModel)]="registerData.phone">
+              <div *ngIf="phone.touched && phone.dirty" class="text-red-500">
+                  <p *ngIf="phone.errors?.['required']">This field is required</p>
+                  <p *ngIf="phone.errors?.['pattern']">Invalid phone number</p>
+
+              </div>
+          </div>
+
+        </div>
+        <div class="flex justify-center mt-2">
+              <button type="submit" class="bg-blue-500 p-2 rounded shadow w-full mb-2">Sign Up</button>
+            </div>
+      </form>
+    </div>
+

@@ -1,0 +1,33 @@
+<div class="flex p-2 bg-blue-300  shadow rounded">
+  <div class="flex flex-col">
+  <h2>User - <span><b>{{user.id}}</b></span></h2>
+
+    <div class="grid grid-cols-2 gap-2 space-x-3">
+      <div class="" >
+        <p>Username : <span class="font-bold">{{user.username}}</span></p>
+
+      </div>
+      <div class="">
+        <p>Email : <span class="font-bold">{{user.email}}</span></p>
+
+      </div>
+       <div class="">
+        <p>Role : <span class="font-bold">{{user.get_role?user.get_role.role_name:""}}</span></p>
+
+      </div>
+      <div class="">
+        <p>Phone : <span class="font-bold">{{user.phone}}</span></p>
+
+      </div>
+      <div class="">
+        <p>Age : <span class="font-bold">{{user.age}}</span></p>
+
+      </div>
+      <div class="">
+        <p>Gender: <span class="font-bold">{{user.gender==0?'M':'F'}}</span></p>
+
+      </div>
+    </div>
+
+   </div>
+</div>

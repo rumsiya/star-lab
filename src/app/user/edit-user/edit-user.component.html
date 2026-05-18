@@ -1,0 +1,52 @@
+<div class="flex p-2 shadow rounded justify-center bg-blue-200">
+
+  <div class="flex flex-col">
+
+    <h1>User # {{user.id}}</h1>
+
+    <form action="" #editForm="ngForm" (ngSubmit)="save(editForm)">
+    <div class="grid grid-cols-2 gap-2 ">
+      <div class="flex flex-col">
+        <label for="">Username</label>
+        <input type="text" name="username" id="" class="w-full p-2 shadow rounded" #username="ngModel" [(ngModel)]="editData.username">
+      </div>
+      <div class="flex flex-col">
+        <label for="">Email</label>
+        <input type="text" name="email" id="" class="w-full p-2 shadow rounded" #email="ngModel" [(ngModel)]="editData.email">
+      </div>
+      <div class="flex flex-col">
+        <label for="">Role</label>
+        <mat-form-field appearance="outline">
+          <mat-select name="role" #role="ngModel" [(ngModel)]="editData.role">
+            <mat-option>Select Role</mat-option>
+            <mat-option [value]="1">Admin</mat-option>
+            <mat-option [value]="2">Staff</mat-option>
+            <mat-option [value]="3">Patient</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="flex flex-col">
+        <label for="">Phone</label>
+        <input type="text" name="phone" id="" class="w-full p-2 shadow rounded" #phone="ngModel" [(ngModel)]="editData.phone">
+      </div>
+      <div class="flex flex-col">
+        <label for="">Age</label>
+        <input type="number" name="age" id="" class="w-full p-2 shadow rounded" #age="ngModel" [(ngModel)]="editData.age">
+      </div>
+      <div class="flex flex-col">
+        <label for="">Gender</label>
+        <div class="flex items-center">
+          <input type="radio" name="radio" [value]="0" class="" #gender="ngModel" [(ngModel)]="editData.gender">Male
+          <input type="radio" name="radio" [value]="1" class="" #gender="ngModel" [(ngModel)]="editData.gender">Female
+        </div>
+
+      </div>
+    </div>
+    <div class="flex justify-center items-center">
+      <button type="submit" class="w-full p-2 bg-blue-400 text-white my-2 shadow rounded">Submit</button>
+    </div>
+    </form>
+
+  </div>
+</div>

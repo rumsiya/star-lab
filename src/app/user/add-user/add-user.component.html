@@ -1,0 +1,71 @@
+<div class="flex w-[1300px] h-[150px] shadow rounded ml-4 mt-2 p-4" style="background: aliceblue;">
+  <div class="flex flex-col">
+    <form action="" [formGroup]="addForm" (ngSubmit)="addUser()">
+      <h2>User List</h2>
+
+      <div class="grid grid-cols-8 gap-8">
+        <div class="flex flex-col">
+          <label for="">Username</label>
+          <input type="text" name="username" id="" formControlName="username" class="w-full p-2 shadow rounded">
+          <div *ngIf="addForm.get('username')?.dirty && addForm.get('username')?.touched">
+            <p *ngIf="addForm.get('username')?.errors?.['required']" class="text-red-600">This field is required</p>
+            <p *ngIf="addForm.get('username')?.errors?.['minlength']" class="text-red-600">Atleast 3 characters required</p>
+            <p *ngIf="addForm.get('username')?.errors?.['maxlength']" class="text-red-600">Should not exceed 10 characters</p>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <label for="">Email</label>
+          <input type="text" name="email" id="" formControlName="email" class="w-full p-2 shadow rounded">
+          <div *ngIf="addForm.get('email')?.dirty && addForm.get('email')?.touched">
+            <p *ngIf="addForm.get('email')?.errors?.['required']" class="text-red-600">This field is required</p>
+            <p *ngIf="addForm.get('email')?.errors?.['email']" class="text-red-600">Inavlid email</p>
+          </div>
+
+        </div>
+        <div class="flex flex-col">
+          <label for="">Role</label>
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-select formControlName="role" >
+              <mat-option>Select Role</mat-option>
+              <mat-option value="1">Admin</mat-option>
+              <mat-option value="2">Staff</mat-option>
+              <mat-option value="3">Patient</mat-option>
+            </mat-select>
+            <div *ngIf="addForm.get('role')?.dirty && addForm.get('role')?.touched">
+               <p *ngIf="addForm.get('role')?.errors?.['required']" class="text-red-600">This field is required</p>
+            </div>
+          </mat-form-field>
+        </div>
+        <div class="flex flex-col">
+          <label for="">Phone</label>
+          <input type="text" name="phone" id="" formControlName="phone" class="w-full p-2 shadow rounded">
+          <div *ngIf="addForm.get('phone')?.touched">
+               <p *ngIf="addForm.get('phone')?.errors?.['required']" class="text-red-600">This field is required</p>
+            </div>
+        </div>
+        <div class="flex flex-col">
+          <label for="">Age</label>
+          <input type="number" name="age" id="" formControlName="age" class="w-full p-2 shadow rounded">
+          <div *ngIf=" addForm.get('age')?.touched">
+            <p *ngIf="addForm.get('age')?.errors?.['required']" class="text-red-600">This field is required</p>
+            <p *ngIf="addForm.get('age')?.errors?.['min'] || addForm.get('age')?.errors?.['max']" class="text-red-600">Age should be between 15 and 80</p>
+
+          </div>
+        </div>
+        <div class="flex flex-col ">
+          <label for="">Gender</label>
+          <div class="flex items-center gap-2">
+            <input type="radio" name="gender" id="" formControlName="gender" value="0" class="w-full p-2 shadow rounded">Male
+            <input type="radio" name="gender" id="" formControlName="gender" value="1" class="w-full p-2 shadow rounded">Female
+          </div>
+          <div *ngIf=" addForm.get('gender')?.touched">
+            <p *ngIf="addForm.get('gender')?.errors?.['required']" class="text-red-600">This field is required</p>
+          </div>
+        </div>
+        <div class="items-center">
+          <button type="submit" class="w-full p-2 bg-blue-400 shadow rounded mt-4">Add User</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

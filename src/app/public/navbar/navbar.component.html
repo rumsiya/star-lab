@@ -1,0 +1,21 @@
+  <nav class="flex w-full h-[70px] items-center bg-blue-400 ">
+    <div class="text-white ml-4 text-2xl font-serif">
+      <h1>Star Lab</h1>
+    </div>
+    <ul class="flex ml-auto p-2 space-x-4 mr-2 text-white">
+      <li>Home</li>
+      <li class="relative group cursor-pointer" *ngIf="isAdmin" >
+        Users
+        <ul class="absolute left-0 top-full invisible group-hover:visible transition duration-200 w-40 p-1 shadow rounded" style="background: #76b3ff;">
+          <li  class="mt-1 p-2 border-b border-white hover:text-black hover:bg-white"><a [routerLink]="['/user']"  > User List</a></li>
+          <li  class="mt-1 p-2  hover:text-black hover:bg-white" [routerLink]="['/role']">Roles</li>
+        </ul>
+      </li>
+      <li *ngIf="isStaff" class="cursor-pointer" [routerLink]="['/test']">Test Packages</li>
+      <li  class="cursor-pointer" [routerLink]="['/appointment']">Appointments</li>
+      <li  class="cursor-pointer" [routerLink]="['/reports']">Reports</li>
+      <li class="cursor-pointer" (click)="logout()">Logout</li>
+    </ul>
+  </nav>
+
+

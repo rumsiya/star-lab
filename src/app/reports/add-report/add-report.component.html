@@ -1,0 +1,38 @@
+<div class="flex p-2 shadow rounded">
+  <div class="flex flex-col w-full bg-blue-100">
+    <h1 class="text-center bg-blue-400 text-white ">Generate Report</h1>
+    <form action="" #reportForm="ngForm" (ngSubmit)="saveReport(reportForm)">
+      <div class="grid grid-cols-2 gap-2 p-2">
+        <div class="flex flex-col">
+          <label for="">Booking No.</label>
+          <input type="hidden" name="appointment_id" #appointment_id="ngModel" [(ngModel)]="reportData.appointment_id">
+          <p class="font-bold">{{ appointment?.booking_id }}</p>
+        </div>
+        <div class="flex flex-col">
+          <label for="">Test Name</label>
+          <p class="font-bold">{{ appointTest?.get_test?.test_name }}</p>
+          <input type="hidden" name="test_id" #test_id="ngModel" [(ngModel)]="reportData.test_id">
+
+        </div>
+          <div class="flex flex-col">
+            <label for="">Result Minimum Value</label>
+            <input type="number" name="min_result" id="" #min_result="ngModel" [(ngModel)]="reportData.min_result" class="w-full p-2 shadow rounded">
+          </div>
+          <div class="flex flex-col">
+            <label for="">Result Maximum Value</label>
+            <input type="number" name="max_result" id="" class="w-full p-2 shadow rounded" #max_result="ngModel" [(ngModel)]="reportData.max_result">
+            <p>Reference value : <b>{{ appointTest?.get_test.normal_min | number:'1.0-2'}} - {{ appointTest?.get_test.normal_max| number:'1.0-2'}} {{ appointTest?.get_test?.get_unit?.unit_name}}</b></p>
+          </div>
+          <div class="flex flex-col">
+            <label for="">Note</label>
+            <textarea name="description" id="" class="w-full p-2" #description="ngModel" [(ngModel)]="reportData.description"> </textarea>
+          </div>
+      </div>
+      <div class="flex justify-center">
+          <button type="submit" class="w-[150px] p-2 text-white bg-blue-500 shadow rounded mb-2">Submit</button>
+      </div>
+    </form>
+  </div>
+
+
+</div>

@@ -1,0 +1,44 @@
+<div class="chatbot-wrapper">
+  <button type="button" class="chatbot-toggle rounded-full bg-blue-600 px-4 py-3 text-white shadow-lg transition hover:bg-blue-700 focus:outline-none"
+    (click)="toggleChat()" *ngIf="!isOpen">
+    Open Chat
+  </button>
+
+  <div *ngIf="isOpen" class="chatbot-card p-4 rounded-3xl shadow-2xl text-slate-900 backdrop-blur-md ring-1 ring-slate-200" style="background: rgb(114 177 201 / 50%);">
+    <div class="mb-3 flex items-center justify-between">
+      <div>
+        <h2 class="text-lg font-semibold text-white">Star Lab bot</h2>
+      </div>
+      <button type="button" class="text-slate-500 transition hover:text-slate-900" (click)="toggleChat()">
+        ✕
+      </button>
+    </div>
+
+    <div #chatWindow class="chat-window h-[240px] overflow-y-auto rounded-3xl border border-slate-200 bg-slate-50 p-3" style="background:white;">
+      <div *ngFor="let message of messages" class="mb-3">
+        <div [ngClass]="message.sender === 'bot' ? 'text-left' : 'text-right'">
+          <div
+            class="inline-block max-w-[85%] px-3 py-2 rounded-2xl break-words"
+            [ngClass]="message.sender === 'bot' ? 'bg-blue-300 bg-slate-200 text-slate-900' : 'bg-blue-600 text-white'">
+            {{ message.text }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form (ngSubmit)="sendMessage()" class="mt-3 flex gap-2">
+      <input
+        [(ngModel)]="userInput"
+        name="userInput"
+        type="text"
+        placeholder="Ask a question..."
+        class="flex-1 rounded-2xl border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none focus:border-blue-500"
+      />
+      <button
+        type="submit"
+        class="rounded-2xl bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700">
+        Send
+      </button>
+    </form>
+  </div>
+</div>

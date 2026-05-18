@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<div class="flex justify-end p-2">
+  <button type="button" class="w-[150px] p-2 bg-red-500 text-white shadow rounded" (click)="addAppoint()"><i class="fa fa-plus mr-2"></i>Add Appointment</button>
+
+</div>
+<table mat-table class="mat-elavation-z8 w-full" [dataSource]="dataSource">
+  <ng-container matColumnDef="no">
+    <th mat-header-cell *matHeaderCellDef>No</th>
+    <td mat-cell *matCellDef="let row;let i=index">{{ i+1 }}</td>
+  </ng-container>
+  <ng-container matColumnDef="booking_id">
+    <th mat-header-cell *matHeaderCellDef>Booking No.</th>
+    <td mat-cell *matCellDef="let row">{{ row.booking_id }}</td>
+  </ng-container>
+  <ng-container matColumnDef="patient">
+    <th mat-header-cell *matHeaderCellDef>Patient Name</th>
+    <td mat-cell *matCellDef="let row">{{ row.get_patient?row.get_patient.username:"Unknown" }}</td>
+  </ng-container>
+  <ng-container matColumnDef="staff">
+    <th mat-header-cell *matHeaderCellDef>Staff Name</th>
+    <td mat-cell *matCellDef="let row">{{ row.get_staff?row.get_staff.username:"--Not Mentioned--" }}</td>
+  </ng-container>
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let row">{{ row.get_status?row.get_status.status:"" }}</td>
+  </ng-container>
+  <ng-container matColumnDef="booking_date">
+    <th mat-header-cell *matHeaderCellDef>Booking Date</th>
+    <td mat-cell *matCellDef="let row">{{ row.booking_date }}</td>
+  </ng-container>
+   <ng-conatiner matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>#</th>
+    <td mat-cell *matCellDef="let row;let i=index" class="space-x-2">
+      <a [routerLink]="['/view-appointment-test',row.id]" class="cursor-pointer"><i class="fa fa-eye text-green-700"></i></a>
+      <a (click)="editAppoint(row)" class="cursor-pointer"><i class="fa fa-pencil text-blue-600"></i></a>
+      <a (click)="deleteAppoint(row)" class="cursor-pointer"><i class="fa fa-trash text-red-700"></i></a>
+
+    </td>
+
+  </ng-conatiner>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+</table>

@@ -1,0 +1,30 @@
+<div class="flex w-[1300px] h-[150px] shadow rounded ml-4 mt-2 p-4 bg-blue-100" >
+  <div class="grid grid-cols-3 gap-2 p-2 w-full">
+    <div class="flex flex-col">
+      <p class=" font-sans">Booking No.</p>
+      <p class="font-extrabold">{{ appointment?.booking_id}}</p>
+
+    </div>
+    <div class="flex flex-col">
+      <p class=" font-sans">Patient Name</p>
+      <p class="font-extrabold">{{ appointment?.get_patient?.username}}</p>
+
+    </div>
+    <div class="flex flex-col">
+      <p class=" font-sans">Booked Date</p>
+      <p class="font-extrabold">{{ appointment?.booking_date}}</p>
+
+    </div>
+    <div class="flex flex-col">
+      <p class=" font-sans">Booking Status</p>
+      <p class="font-extrabold">{{ appointment?.get_status?.status}}</p>
+
+    </div>
+    <div class="flex flex-col">
+      <p class=" font-sans">Staff Name</p>
+      <p class="font-extrabold">{{ appointment?.get_staff?.username}}</p>
+
+    </div>
+
+  </div>
+</div>
