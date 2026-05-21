@@ -15,7 +15,7 @@
             <div *ngIf="username.invalid && username.touched" class="text-red-500">
               <p *ngIf="username.errors?.['required']">This Field is required</p>
               <p *ngIf="username.errors?.['minlength']">Atleast 3 characters required</p>
-              <p *ngIf="username.errors?.['maxlength']">Username should not exceed 8 characters</p>
+              <p *ngIf="username.errors?.['maxlength']">Username should not exceed 10 characters</p>
             </div>
           </div>
           <div class="flex flex-col">
